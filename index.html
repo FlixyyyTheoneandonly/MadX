@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MadX Key Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            text-align: center;
+        }
+        .key-box {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            display: inline-block;
+            cursor: pointer;
+            user-select: all;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Thank you for using MadX</h1>
+        <p>Here is your key:</p>
+        <div id="keyBox" class="key-box"></div>
+    </div>
+    
+    <script>
+        // Sample keys array for demonstration
+        const keys = [
+            "ABC123XYZ",
+            "DEF456UVW",
+            "GHI789RST",
+            "JKL012MNO",
+            "PQR345TUV"
+        ];
+
+        // Function to get a random key from the keys array
+        function getRandomKey() {
+            const randomIndex = Math.floor(Math.random() * keys.length);
+            return keys[randomIndex];
+        }
+
+        // Set the key in the keyBox div
+        document.getElementById('keyBox').textContent = getRandomKey();
+
+        // Optional: Add a click event to copy the key to the clipboard
+        document.getElementById('keyBox').addEventListener('click', function() {
+            const key = this.textContent;
+            navigator.clipboard.writeText(key).then(function() {
+                alert('Key copied to clipboard!');
+            }, function(err) {
+                console.error('Could not copy text: ', err);
+            });
+        });
+    </script>
+</body>
+</html>
